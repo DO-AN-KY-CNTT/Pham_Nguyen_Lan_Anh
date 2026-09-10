@@ -1,9 +1,7 @@
 # ĐỒ ÁN KỲ - Xây dựng ứng dụng di động đề xuất thực đơn dựa trên mục tiêu dinh dưỡng và ngân sách
-
-
-# Pham_Nguyen_Lan_Anh
-# MSSV 5231000069
-# Lớp 523100B 
+## Pham_Nguyen_Lan_Anh
+## MSSV 5231000069
+## Lớp 523100B 
 
 ## 2. Mục tiêu đề tài
 
