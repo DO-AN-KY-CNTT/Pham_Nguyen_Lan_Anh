@@ -1,0 +1,9 @@
+﻿<resources>
+    <string name="app_name">NutriBudget</string>
+
+    <!-- Bottom Navigation -->
+    <string name="nav_home">Trang chủ</string>
+    <string name="nav_meal">Thực đơn</string>
+    <string name="nav_history">Lịch sử</string>
+    <string name="nav_profile">Cá nhân</string>
+</resources>

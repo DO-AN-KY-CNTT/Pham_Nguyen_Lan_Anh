@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="1dp"
+    app:strokeColor="@color/card_stroke"
+    app:strokeWidth="1dp"
+    app:cardBackgroundColor="@color/surface">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="14dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvAdjustMealType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_badge_green"
+                android:text="Bữa trưa"
+                android:textColor="@color/badge_green_text"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="3dp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSwapMeal"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="Thay món"
+                android:textSize="12sp"
+                android:textColor="@color/primary"
+                app:icon="@drawable/ic_swap_horiz"
+                app:iconTint="@color/primary"
+                app:iconSize="16dp"
+                app:cornerRadius="18dp"
+                android:paddingHorizontal="12dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgAdjustDish"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_dish_chicken"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="12dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvAdjustDishName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ức gà áp chảo sốt chanh"
+                    android:textColor="@color/on_surface"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvAdjustStats"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="680 kcal • 55g Đạm"
+                    android:textColor="@color/on_surface_variant"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvAdjustCost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="38.000đ"
+                    android:textColor="@color/secondary"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

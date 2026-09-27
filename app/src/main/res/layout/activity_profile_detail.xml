@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Top App Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:id="@+id/btnBackProfileDetail"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="8dp"
+                android:src="@drawable/ic_arrow_back"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Quay lại" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:text="Thông tin cá nhân"
+                android:textColor="@color/on_surface"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Avatar Editor Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:strokeColor="@color/card_stroke"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:gravity="center_horizontal">
+
+                <FrameLayout
+                    android:layout_width="84dp"
+                    android:layout_height="84dp">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/imgEditAvatar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/img_avatar_default"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="bottom|end"
+                        android:background="@drawable/bg_circle_icon"
+                        android:padding="5dp"
+                        android:src="@drawable/ic_edit"
+                        app:tint="@color/primary" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tvEditNameBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Nguyễn Văn An"
+                    android:textColor="@color/on_surface"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_badge_green"
+                    android:layout_marginTop="4dp"
+                    android:text="Thành viên Tiêu Chuẩn"
+                    android:textColor="@color/badge_green_text"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="3dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Edit Form Card -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Thông tin cơ bản &amp; thể trạng"
+            android:textColor="@color/on_surface"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:strokeColor="@color/card_stroke"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Full Name -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilProfileFullName"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:hint="Họ và tên"
+                    app:startIconDrawable="@drawable/ic_person"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxStrokeColor="@color/primary">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etProfileFullName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:text="Nguyễn Văn An"
+                        android:textColor="@color/on_surface"
+                        android:textSize="14sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Email -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilProfileEmail"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:hint="Email"
+                    app:startIconDrawable="@drawable/ic_email"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxStrokeColor="@color/primary">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etProfileEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:text="an.nguyen@example.com"
+                        android:textColor="@color/on_surface"
+                        android:textSize="14sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Gender & Age Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="6dp"
+                        android:hint="Giới tính"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxStrokeColor="@color/primary">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etProfileGender"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nam"
+                            android:textColor="@color/on_surface"
+                            android:textSize="14sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="6dp"
+                        android:hint="Tuổi"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxStrokeColor="@color/primary">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etProfileAge"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:text="24"
+                            android:textColor="@color/on_surface"
+                            android:textSize="14sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <!-- Height & Weight Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="6dp"
+                        android:hint="Chiều cao (cm)"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxStrokeColor="@color/primary">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etProfileHeight"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:text="175"
+                            android:textColor="@color/on_surface"
+                            android:textSize="14sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="6dp"
+                        android:hint="Cân nặng (kg)"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxStrokeColor="@color/primary">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etProfileWeight"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            android:text="68.0"
+                            android:textColor="@color/on_surface"
+                            android:textSize="14sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Save Profile Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSaveProfile"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="24dp"
+            android:text="Lưu thông tin"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:backgroundTint="@color/primary"
+            android:textColor="@color/white"
+            app:cornerRadius="14dp"
+            app:icon="@drawable/ic_check"
+            app:iconTint="@color/white"
+            app:iconGravity="textStart" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

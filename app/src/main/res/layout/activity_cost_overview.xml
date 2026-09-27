@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Top App Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:id="@+id/btnBackCost"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="8dp"
+                android:src="@drawable/ic_arrow_back"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Quay lại" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:text="Tổng chi phí thực đơn"
+                android:textColor="@color/on_surface"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Menu Name Label -->
+        <TextView
+            android:id="@+id/tvCostMenuName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:text="Thực đơn Cân đối Tối ưu"
+            android:textColor="@color/primary"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <!-- Warning Card when Over Budget -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardCostOverBudgetWarning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:visibility="gone"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/error"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/error_container">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_bolt"
+                        app:tint="@color/error"
+                        android:contentDescription="Cảnh báo" />
+
+                    <TextView
+                        android:id="@+id/tvCostWarningTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="8dp"
+                        android:text="Cảnh báo vượt ngân sách!"
+                        android:textColor="@color/error"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvCostWarningDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="Tổng chi phí thực đơn vượt ngân sách ngày. Hãy điều chỉnh món ăn để tiết kiệm chi phí."
+                    android:textColor="@color/on_surface"
+                    android:textSize="12sp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCostAdjustMeal"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginTop="12dp"
+                    android:text="Điều chỉnh thực đơn"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="@color/error"
+                    android:textColor="@color/white"
+                    app:cornerRadius="10dp"
+                    app:icon="@drawable/ic_swap_horiz"
+                    app:iconTint="@color/white"
+                    app:iconGravity="textStart" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Big Financial Summary Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:strokeColor="@color/card_stroke"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tình trạng ngân sách hôm nay"
+                    android:textColor="@color/on_surface_variant"
+                    android:textSize="13sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tvCostSpentBig"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0đ"
+                        android:textColor="@color/on_surface"
+                        android:textSize="26sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvCostLimitBig"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:text="/ 0đ"
+                        android:textColor="@color/on_surface_variant"
+                        android:textSize="16sp" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/tvCostSurplusBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_badge_green"
+                        android:text="Dư 0đ (0%)"
+                        android:textColor="@color/badge_green_text"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="4dp" />
+                </LinearLayout>
+
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:id="@+id/progressCostBudget"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="14dp"
+                    android:progress="0"
+                    app:trackThickness="8dp"
+                    app:trackCornerRadius="4dp"
+                    app:indicatorColor="@color/primary"
+                    app:trackColor="@color/surface_container_high" />
+
+                <TextView
+                    android:id="@+id/tvCostBudgetUsagePercent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="Đã sử dụng 0% hạn mức ngân sách ngày"
+                    android:textColor="@color/on_surface_variant"
+                    android:textSize="11sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Nutrition Overview Card -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Tổng quan dinh dưỡng nạp vào"
+            android:textColor="@color/on_surface"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="1dp"
+            app:strokeColor="@color/card_stroke"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Calorie Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Tổng năng lượng (Calo)"
+                        android:textColor="@color/on_surface"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvCostCaloSummary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 / 0 kcal (0%)"
+                        android:textColor="@color/primary"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:id="@+id/progressCostCalo"
+                    android:layout_width="match_parent"
+                    android:layout_height="6dp"
+                    android:layout_marginTop="8dp"
+                    android:progress="0"
+                    app:trackThickness="6dp"
+                    app:trackCornerRadius="3dp"
+                    app:indicatorColor="@color/primary"
+                    app:trackColor="@color/surface_container_high" />
+
+                <!-- Divider -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="12dp"
+                    android:background="@color/surface_container" />
+
+                <!-- Protein Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Chất đạm (Protein)"
+                        android:textColor="@color/on_surface_variant"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvCostProteinSummary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 / 0g"
+                        android:textColor="@color/macro_protein"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Carb Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Tinh bột (Carbohydrate)"
+                        android:textColor="@color/on_surface_variant"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvCostCarbsSummary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 / 0g"
+                        android:textColor="@color/macro_carb"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Fat Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Chất béo (Fat)"
+                        android:textColor="@color/on_surface_variant"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvCostFatSummary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 / 0g"
+                        android:textColor="@color/macro_fat"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Meal Breakdown Breakdown -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Phân bổ chi phí theo bữa"
+            android:textColor="@color/on_surface"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="1dp"
+            app:strokeColor="@color/card_stroke"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Breakfast -->
+                <LinearLayout
+                    android:id="@+id/layoutCostBreakfast"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tvCostBreakfastName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Bữa sáng"
+                        android:textColor="@color/on_surface"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvCostBreakfastCost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0đ (0%)"
+                        android:textColor="@color/secondary"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/dividerBreakfast"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@color/surface_container" />
+
+                <!-- Lunch -->
+                <LinearLayout
+                    android:id="@+id/layoutCostLunch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tvCostLunchName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Bữa trưa"
+                        android:textColor="@color/on_surface"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvCostLunchCost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0đ (0%)"
+                        android:textColor="@color/secondary"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/dividerLunch"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@color/surface_container" />
+
+                <!-- Dinner -->
+                <LinearLayout
+                    android:id="@+id/layoutCostDinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tvCostDinnerName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Bữa tối"
+                        android:textColor="@color/on_surface"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvCostDinnerCost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0đ (0%)"
+                        android:textColor="@color/secondary"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Snack (Bữa phụ) -->
+                <View
+                    android:id="@+id/dividerDinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@color/surface_container"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:id="@+id/layoutCostSnack"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/tvCostSnackName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Bữa phụ"
+                        android:textColor="@color/on_surface"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvCostSnackCost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0đ (0%)"
+                        android:textColor="@color/secondary"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Grocery List CTA Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCostToGrocery"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="24dp"
+            android:text="Xem danh sách nguyên liệu cần mua"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:backgroundTint="@color/primary"
+            android:textColor="@color/white"
+            app:cornerRadius="14dp"
+            app:icon="@drawable/ic_shopping_bag"
+            app:iconTint="@color/white"
+            app:iconGravity="textStart" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

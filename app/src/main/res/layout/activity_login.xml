@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:gravity="center_horizontal">
+
+        <!-- Top Header with App Logo -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_nutribudget_logo"
+                android:contentDescription="NutriBudget Logo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="NutriBudget"
+                android:textColor="@color/primary"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Hero Visual Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginBottom="18dp"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="2dp"
+            app:strokeColor="@color/card_stroke"
+            app:strokeWidth="1dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_hero_kitchen"
+                    android:contentDescription="Hero Visual" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#40000000" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|start"
+                    android:layout_margin="12dp"
+                    android:background="@drawable/bg_badge_green"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp">
+
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:src="@drawable/ic_eco"
+                        app:tint="@color/badge_green_text" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="Ăn chuẩn vị, chi chuẩn ví"
+                        android:textColor="@color/badge_green_text"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </FrameLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Welcome Text -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chào mừng trở lại!"
+            android:textColor="@color/on_surface"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="20dp"
+            android:text="Cân đối dinh dưỡng mỗi bữa ăn mà ví vẫn luôn rủng rỉnh."
+            android:textColor="@color/on_surface_variant"
+            android:textSize="13sp"
+            android:gravity="center" />
+
+        <!-- Form Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:strokeColor="@color/card_stroke"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Email Input -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilEmail"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="14dp"
+                    android:hint="Email hoặc Tên đăng nhập"
+                    app:startIconDrawable="@drawable/ic_email"
+                    app:startIconTint="@color/on_surface_variant"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxStrokeColor="@color/primary">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:text="an.nguyen@example.com"
+                        android:textColor="@color/on_surface"
+                        android:textSize="14sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Password Input -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilPassword"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Mật khẩu"
+                    app:startIconDrawable="@drawable/ic_lock"
+                    app:startIconTint="@color/on_surface_variant"
+                    app:endIconMode="password_toggle"
+                    app:endIconTint="@color/on_surface_variant"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxStrokeColor="@color/primary">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:text="123456"
+                        android:textColor="@color/on_surface"
+                        android:textSize="14sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Options Row: Remember Me & Forgot Password -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/cbRemember"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Ghi nhớ"
+                        android:textColor="@color/on_surface_variant"
+                        android:textSize="12sp"
+                        app:buttonTint="@color/primary" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/tvForgotPassword"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Quên mật khẩu?"
+                        android:textColor="@color/primary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Login Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Đăng nhập"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="@color/primary"
+                    android:textColor="@color/white"
+                    app:cornerRadius="14dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Google Login Option -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGoogleLogin"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Tiếp tục với Google"
+            android:textColor="@color/on_surface"
+            android:textSize="14sp"
+            app:strokeColor="@color/outline"
+            app:cornerRadius="14dp"
+            app:icon="@drawable/ic_person"
+            app:iconTint="@color/primary"
+            app:iconGravity="textStart" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- Register Link Footer -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chưa có tài khoản? "
+                android:textColor="@color/on_surface_variant"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tvRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đăng ký ngay"
+                android:textColor="@color/primary"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

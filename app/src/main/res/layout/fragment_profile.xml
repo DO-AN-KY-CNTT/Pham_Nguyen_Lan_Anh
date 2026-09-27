@@ -1,0 +1,485 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Top Header Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="14dp">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_nutribudget_logo"
+                android:contentDescription="Logo" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NutriBudget"
+                    android:textColor="@color/primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tài khoản cá nhân"
+                    android:textColor="@color/on_surface_variant"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEditProfileTop"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="Sửa"
+                android:textColor="@color/primary"
+                android:textSize="12sp"
+                app:icon="@drawable/ic_edit"
+                app:iconTint="@color/primary"
+                app:iconSize="16dp"
+                app:cornerRadius="18dp"
+                android:paddingHorizontal="12dp" />
+        </LinearLayout>
+
+        <!-- User Identity Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:strokeColor="@color/card_stroke"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:gravity="center_horizontal">
+
+                <FrameLayout
+                    android:layout_width="80dp"
+                    android:layout_height="80dp">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/imgProfileAvatar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/img_avatar_default"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="bottom|end"
+                        android:src="@drawable/ic_check_circle"
+                        app:tint="@color/primary" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tvProfileName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Nguyễn Văn An"
+                    android:textColor="@color/on_surface"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvProfileEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="an.nguyen@example.com"
+                    android:textColor="@color/on_surface_variant"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvProfileMembership"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/bg_badge_green"
+                    android:text="PRO • Thành viên Tiêu Chuẩn"
+                    android:textColor="@color/badge_green_text"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="3dp" />
+
+                <!-- 2 Stats Pills: Streak & Savings -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="6dp"
+                        android:background="@drawable/bg_input_field"
+                        android:padding="10dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvStreakDays"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🔥 14 ngày"
+                            android:textColor="@color/primary"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Ăn uống chuẩn chỉ"
+                            android:textColor="@color/on_surface_variant"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="6dp"
+                        android:background="@drawable/bg_input_field"
+                        android:padding="10dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvSavedMoney"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="💰 420.000đ"
+                            android:textColor="@color/secondary"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Đã tiết kiệm"
+                            android:textColor="@color/on_surface_variant"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Body Stats Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="1dp"
+            app:strokeColor="@color/card_stroke"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:text="Chỉ số thể trạng"
+                    android:textColor="@color/on_surface"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <!-- 4 Stats in 2x2 Grid -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Giới tính / Tuổi"
+                            android:textColor="@color/on_surface_variant"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/tvGenderAge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nam • 24 tuổi"
+                            android:textColor="@color/on_surface"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Chiều cao / Cân nặng"
+                            android:textColor="@color/on_surface_variant"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/tvHeightWeight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="175 cm • 68 kg"
+                            android:textColor="@color/on_surface"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Chỉ số BMI"
+                            android:textColor="@color/on_surface_variant"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/tvBmi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="22.2 (Chuẩn)"
+                            android:textColor="@color/primary"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Mức độ vận động"
+                            android:textColor="@color/on_surface_variant"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Vừa phải (3-5 buổi/tuần)"
+                            android:textColor="@color/on_surface"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Goals & Budget Quick Link Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="1dp"
+            app:strokeColor="@color/card_stroke"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Row 1: Nutrition Goal Link -->
+                <LinearLayout
+                    android:id="@+id/btnNavNutritionGoal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingVertical="8dp"
+                    android:background="?attr/selectableItemBackground">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_fitness_center"
+                        app:tint="@color/primary" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="12dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Mục tiêu dinh dưỡng"
+                            android:textColor="@color/on_surface"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvProfileGoalDesc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tăng cơ • 2.000 kcal/ngày"
+                            android:textColor="@color/on_surface_variant"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_arrow_forward"
+                        app:tint="@color/outline" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="6dp"
+                    android:background="@color/surface_container" />
+
+                <!-- Row 2: Budget Link -->
+                <LinearLayout
+                    android:id="@+id/btnNavBudget"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingVertical="8dp"
+                    android:background="?attr/selectableItemBackground">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_account_balance_wallet"
+                        app:tint="@color/secondary" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="12dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ngân sách ăn uống"
+                            android:textColor="@color/on_surface"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvProfileBudgetDesc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="100.000 đ/ngày (700.000 đ/tuần)"
+                            android:textColor="@color/on_surface_variant"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_arrow_forward"
+                        app:tint="@color/outline" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Edit Profile Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnEditProfileDialog"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="10dp"
+            android:text="Chỉnh sửa thông tin cá nhân"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:backgroundTint="@color/primary"
+            android:textColor="@color/white"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/ic_edit"
+            app:iconTint="@color/white"
+            app:iconGravity="textStart" />
+
+        <!-- Logout Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLogout"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="16dp"
+            android:text="Đăng xuất"
+            android:textColor="@color/error"
+            android:textSize="14sp"
+            app:strokeColor="@color/error"
+            app:cornerRadius="12dp" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

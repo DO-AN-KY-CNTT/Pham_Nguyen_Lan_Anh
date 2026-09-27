@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Top Header Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="12dp">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_nutribudget_logo"
+                android:contentDescription="Logo" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lịch sử thực đơn"
+                    android:textColor="@color/primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hành trình dinh dưỡng &amp; ngân sách"
+                    android:textColor="@color/on_surface_variant"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/btnSearchHistory"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:padding="6dp"
+                android:src="@drawable/ic_search"
+                app:tint="@color/on_surface_variant"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Tìm kiếm" />
+        </LinearLayout>
+
+        <!-- Time Filter Chips -->
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroupHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipHistDay"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Theo ngày"
+                app:chipCornerRadius="16dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipHistWeek"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Theo tuần"
+                app:chipCornerRadius="16dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipHistMonth"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Theo tháng"
+                app:chipCornerRadius="16dp" />
+        </com.google.android.material.chip.ChipGroup>
+
+        <!-- History Summary Banner -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="1dp"
+            app:strokeColor="@color/card_stroke"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/primary_container">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="14dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/ic_history"
+                    app:tint="@color/primary"
+                    android:contentDescription="History icon" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvHistoryBannerTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tháng 10, 2026"
+                        android:textColor="@color/primary"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvHistoryBannerSubtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Đang tải lịch sử thực đơn..."
+                        android:textColor="@color/on_surface_variant"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Section Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Danh sách thực đơn đã lưu"
+            android:textColor="@color/on_surface"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <!-- Loading Indicator -->
+        <ProgressBar
+            android:id="@+id/progressHistoryLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginVertical="20dp"
+            android:visibility="gone" />
+
+        <!-- Empty State View -->
+        <TextView
+            android:id="@+id/tvEmptyHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="32dp"
+            android:gravity="center"
+            android:text="Chưa có lịch sử thực đơn"
+            android:textColor="@color/on_surface_variant"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+        <!-- History RecyclerView -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMealHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

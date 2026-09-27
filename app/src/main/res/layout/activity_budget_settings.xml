@@ -1,0 +1,362 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Top App Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:id="@+id/btnBackBudget"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="8dp"
+                android:src="@drawable/ic_arrow_back"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Quay lại" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:text="Thiết lập ngân sách"
+                android:textColor="@color/on_surface"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Current Budget Highlight Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="18dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:strokeColor="@color/card_stroke"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ngân sách hiện tại"
+                    android:textColor="@color/on_surface_variant"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvCurrentBudgetBig"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="100.000 đ/ngày"
+                    android:textColor="@color/secondary"
+                    android:textSize="26sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/bg_badge_green"
+                    android:text="Ăn ngon thông minh, chuẩn từng đồng"
+                    android:textColor="@color/badge_green_text"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="3dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Adjust Daily Amount Form -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Điều chỉnh hạn mức mỗi ngày"
+            android:textColor="@color/on_surface"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="18dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:strokeColor="@color/card_stroke"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Stepper Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnBudgetDecrease"
+                        style="@style/Widget.Material3.Button.TonalButton"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:padding="0dp"
+                        app:icon="@drawable/ic_remove"
+                        app:iconTint="@color/primary"
+                        app:iconGravity="textStart"
+                        app:cornerRadius="24dp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilDailyBudget"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="10dp"
+                        android:hint="Số tiền (VNĐ)"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxStrokeColor="@color/primary">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etDailyBudget"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:text="100000"
+                            android:textAlignment="center"
+                            android:textColor="@color/on_surface"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnBudgetIncrease"
+                        style="@style/Widget.Material3.Button.TonalButton"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:padding="0dp"
+                        app:icon="@drawable/ic_add"
+                        app:iconTint="@color/primary"
+                        app:iconGravity="textStart"
+                        app:cornerRadius="24dp" />
+                </LinearLayout>
+
+                <!-- Quick Presets -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="Mức gợi ý phổ biến:"
+                    android:textColor="@color/on_surface_variant"
+                    android:textSize="12sp" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chipGroupBudgetPresets"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipBudget50"
+                        style="@style/Widget.Material3.Chip.Suggestion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="50.000đ"
+                        app:chipCornerRadius="16dp" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipBudget70"
+                        style="@style/Widget.Material3.Chip.Suggestion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="70.000đ"
+                        app:chipCornerRadius="16dp" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipBudget100"
+                        style="@style/Widget.Material3.Chip.Suggestion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="100.000đ"
+                        app:chipCornerRadius="16dp" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipBudget120"
+                        style="@style/Widget.Material3.Chip.Suggestion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="120.000đ"
+                        app:chipCornerRadius="16dp" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipBudget150"
+                        style="@style/Widget.Material3.Chip.Suggestion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="150.000đ"
+                        app:chipCornerRadius="16dp" />
+                </com.google.android.material.chip.ChipGroup>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Projected Budget Breakdown (Day, Week, Month) -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Ước tính theo chu kỳ"
+            android:textColor="@color/on_surface"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="1dp"
+            app:strokeColor="@color/card_stroke"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Ngân sách mỗi ngày"
+                        android:textColor="@color/on_surface_variant"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvProjectedDay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="100.000 đ"
+                        android:textColor="@color/on_surface"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@color/surface_container" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Ngân sách mỗi tuần (x7 ngày)"
+                        android:textColor="@color/on_surface_variant"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvProjectedWeek"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="700.000 đ"
+                        android:textColor="@color/primary"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@color/surface_container" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Ngân sách mỗi tháng (x30 ngày)"
+                        android:textColor="@color/on_surface_variant"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvProjectedMonth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3.000.000 đ"
+                        android:textColor="@color/secondary"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Save Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSaveBudget"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="24dp"
+            android:text="Lưu ngân sách"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:backgroundTint="@color/primary"
+            android:textColor="@color/white"
+            app:cornerRadius="14dp"
+            app:icon="@drawable/ic_check"
+            app:iconTint="@color/white"
+            app:iconGravity="textStart" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
