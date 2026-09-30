@@ -4,7 +4,8 @@ import java.io.Serializable;
 
 public class MealItem implements Serializable {
     private String id;
-    private String mealType; // Bữa sáng, Bữa trưa, Bữa tối, Bữa phụ
+    private String mealType;    // Display title
+    private String buaAnCode;   // Raw code: SANG, TRUA, TOI, PHU
     private String dishName;
     private String portion;
     private int calories;
@@ -19,6 +20,7 @@ public class MealItem implements Serializable {
     public MealItem(String id, String mealType, String dishName, String portion, int calories, int protein, int carbs, int fat, int cost, int imageRes) {
         this.id = id;
         this.mealType = mealType;
+        this.buaAnCode = null;
         this.dishName = dishName;
         this.portion = portion;
         this.calories = calories;
@@ -43,6 +45,8 @@ public class MealItem implements Serializable {
     public void setId(String id) { this.id = id; }
     public String getMealType() { return mealType; }
     public void setMealType(String mealType) { this.mealType = mealType; }
+    public String getBuaAnCode() { return buaAnCode; }
+    public void setBuaAnCode(String buaAnCode) { this.buaAnCode = buaAnCode; }
     public String getDishName() { return dishName; }
     public void setDishName(String dishName) { this.dishName = dishName; }
     public String getPortion() { return portion; }

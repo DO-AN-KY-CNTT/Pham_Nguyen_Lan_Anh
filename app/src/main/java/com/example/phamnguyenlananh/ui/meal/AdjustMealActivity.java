@@ -266,7 +266,7 @@ public class AdjustMealActivity extends AppCompatActivity {
         alternativeDishesList.clear();
         NumberFormat nf = NumberFormat.getInstance(new Locale("vi", "VN"));
 
-        String mealTypeCode = resolveMealTypeCode(currentDish.getMealType());
+        String mealTypeCode = resolveMealTypeCodeFromItem(currentDish);
 
         for (DishResponse d : allDishesFromApi) {
             // Không hiển thị chính món đang dùng
@@ -388,6 +388,7 @@ public class AdjustMealActivity extends AppCompatActivity {
                 currentDish.getDetailId()
         );
 
+        updatedItem.setBuaAnCode(resolveMealTypeCodeFromItem(currentDish));
         currentPlan.getMeals().set(currentDishIndex, updatedItem);
         currentPlan.recalculateTotals();
 
@@ -398,7 +399,7 @@ public class AdjustMealActivity extends AppCompatActivity {
             }
         } catch (Exception ignored) {}
 
-        String buaAnCode = resolveMealTypeCode(currentDish.getMealType());
+        String buaAnCode = resolveMealTypeCodeFromItem(currentDish);
 
         // 2. Nếu đã có menuId trong CSDL MySQL: gọi PUT /api/menus/{menuId}/items/{itemId}
         if (menuId != null && menuId > 0 && currentDish.getDetailId() != null && currentDish.getDetailId() > 0) {
@@ -443,7 +444,7 @@ public class AdjustMealActivity extends AppCompatActivity {
             Long dId = it.getDishId() != null ? it.getDishId() : 1L;
             items.add(new MenuDetailRequest(
                     dId,
-                    resolveMealTypeCode(it.getMealType()),
+                    resolveMealTypeCodeFromItem(it),
                     1.0,
                     (double) it.getCalories(),
                     (double) it.getCost()
@@ -478,7 +479,7 @@ public class AdjustMealActivity extends AppCompatActivity {
             Long dId = it.getDishId() != null ? it.getDishId() : 1L;
             items.add(new MenuDetailRequest(
                     dId,
-                    resolveMealTypeCode(it.getMealType()),
+                    resolveMealTypeCodeFromItem(it),
                     1.0,
                     (double) it.getCalories(),
                     (double) it.getCost()
@@ -534,11 +535,22 @@ public class AdjustMealActivity extends AppCompatActivity {
 
     private String resolveMealTypeCode(String mealType) {
         if (mealType == null) return "TRUA";
-        String t = mealType.toLowerCase();
-        if (t.contains("sáng") || t.contains("sang")) return "SANG";
-        if (t.contains("tối") || t.contains("toi")) return "TOI";
-        if (t.contains("phụ") || t.contains("phu")) return "PHU";
+        String t = mealType.toLowerCase().trim();
+        // Exact code match (already a code)
+        if (t.equals("sang") || t.equals("trua") || t.equals("toi") || t.equals("phu")) return t.toUpperCase();
+                if (t.contains("sang")) return "SANG";
+        if (t.contains("toi")) return "TOI";
+        if (t.contains("phu")) return "PHU";
         return "TRUA";
+    }
+
+    private String resolveMealTypeCodeFromItem(com.example.phamnguyenlananh.model.MealItem item) {
+        if (item == null) return "TRUA";
+        // Prefer raw code stored during API load
+        if (item.getBuaAnCode() != null && !item.getBuaAnCode().isEmpty()) {
+            return item.getBuaAnCode().toUpperCase();
+        }
+        return resolveMealTypeCode(item.getMealType());
     }
 
     private int resolveDishImage(Long id) {

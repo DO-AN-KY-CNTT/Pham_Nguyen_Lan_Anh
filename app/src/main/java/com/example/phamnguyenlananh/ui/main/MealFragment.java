@@ -236,7 +236,7 @@ public class MealFragment extends Fragment {
                                     mealDishImg = R.drawable.img_dish_bento;
                                 }
 
-                                meals.add(new MealItem(
+                                MealItem buaMeal = new MealItem(
                                         d.getMonAnId() != null ? String.valueOf(d.getMonAnId()) : ("dish_" + meals.size()),
                                         mealTypeTitle,
                                         d.getTenMon(),
@@ -248,7 +248,9 @@ public class MealFragment extends Fragment {
                                         d.getChiPhi() != null ? d.getChiPhi().intValue() : 30000,
                                         mealDishImg,
                                         d.getMonAnId()
-                                ));
+                                );
+                                buaMeal.setBuaAnCode(buaCode != null ? buaCode.toUpperCase() : "TRUA");
+                                meals.add(buaMeal);
                             }
                         }
 

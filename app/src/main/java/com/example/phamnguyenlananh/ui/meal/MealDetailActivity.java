@@ -289,11 +289,16 @@ public class MealDetailActivity extends AppCompatActivity {
                     }
                 }
 
+                // Use raw buaAnCode (reliable), fallback to ASCII keyword parsing
                 String mealTypeCode = "TRUA";
-                String t = item.getMealType() != null ? item.getMealType().toLowerCase() : "";
-                if (t.contains("sÃ¡ng") || t.contains("sang")) mealTypeCode = "SANG";
-                else if (t.contains("tá»‘i") || t.contains("toi")) mealTypeCode = "TOI";
-                else if (t.contains("phá»¥") || t.contains("phu")) mealTypeCode = "PHU";
+                if (item.getBuaAnCode() != null && !item.getBuaAnCode().isEmpty()) {
+                    mealTypeCode = item.getBuaAnCode().toUpperCase();
+                } else {
+                    String t = item.getMealType() != null ? item.getMealType().toLowerCase() : "";
+                                    if (t.contains("sang")) mealTypeCode = "SANG";
+                    else if (t.contains("toi")) mealTypeCode = "TOI";
+                    else if (t.contains("phu")) mealTypeCode = "PHU";
+                }
 
                 items.add(new MenuDetailRequest(
                         dishId,
