@@ -1,4 +1,4 @@
-﻿# ĐỒ ÁN TỐT NGHIỆP: NUTRIBUDGET
+﻿# ĐỒ ÁN TỐT KỲ
 ## Ứng Dụng Di Động Đề Xuất Thực Đơn Dựa Trên Mục Tiêu Dinh Dưỡng Và Ngân Sách
 
 - **Sinh viên thực hiện:** Phạm Nguyễn Lan Anh
