@@ -1,178 +1,217 @@
-﻿# ĐỒ ÁN TỐT NGHIỆP: NUTRIBUDGET
-## Ứng Dụng Di Động Đề Xuất Thực Đơn Dựa Trên Mục Tiêu Dinh Dưỡng Và Ngân Sách
+# NutriBudget - ?ng D?ng Qu?n L? Dinh D??ng & Ng?n S?ch
 
-- **Sinh viên thực hiện:** Phạm Nguyễn Lan Anh
-- **MSSV:** 5231000069
-- **Lớp:** 523100B
+> ?ng d?ng Android gi?p ng??i d?ng l?n th?c ??n ?n u?ng l?nh m?nh, ph? h?p v?i m?c ti?u dinh d??ng c? nh?n v? gi?i h?n ng?n s?ch h?ng ng?y.
 
 ---
 
-## 1. Giới Thiệu & Mục Tiêu Đề Tài
+## 1. T?ng Quan Ch?c N?ng
 
-Xây dựng ứng dụng di động hỗ trợ người dùng quản lý chế độ ăn uống, theo dõi dinh dưỡng và kiểm soát chi phí thực phẩm hàng ngày. Hệ thống tự động phân tích mục tiêu dinh dưỡng cá nhân kết hợp với hạn mức ngân sách để tính toán và đề xuất các phương án thực đơn tối ưu nhất.
-
-### Tính năng chính:
-- **Xác thực:** Đăng ký, đăng nhập bảo mật với JSON Web Token (JWT).
-- **Hồ sơ cá nhân & Thể trạng:** Quản lý thông tin thể trạng (chiều cao, cân nặng), tự động tính toán chỉ số BMI và phân loại thể trạng.
-- **Mục tiêu dinh dưỡng:** Thiết lập calo mục tiêu hàng ngày, tỷ lệ macronutrients (protein, carb, fat) phù hợp với nhu cầu (Giảm cân, Giữ cân, Tăng cân, Tăng cơ).
-- **Thiết lập ngân sách:** Cài đặt định mức chi tiêu cho bữa ăn theo ngày, tuần, tháng.
-- **Đề xuất thực đơn tự động:** Thuật toán thông minh tổng hợp từ CSDL món ăn thực tế và đề xuất 3 phương án đa dạng:
-  1. *Thực đơn Cân đối tối ưu* (Tối ưu calo và dinh dưỡng).
-  2. *Thực đơn Tiết kiệm* (Tối đa hóa chi phí trong ngân sách).
-  3. *Thực đơn Giàu đạm / Tăng cơ* (Ưu tiên lượng protein cao).
-- **Xem chi tiết thực đơn:** Thống kê khẩu phần, calo, protein, carb, fat và chi phí từng món.
-- **Điều chỉnh thực đơn (Đổi món):** Cho phép đổi món ăn trong từng bữa sang các món ăn thay thế phù hợp, hệ thống tự động tính toán lại dinh dưỡng và chi phí.
-- **Tổng quan chi phí:** So sánh chi phí thực đơn với ngân sách ngày, tính số tiền dư/vượt, chi phí theo từng bữa ăn.
-- **Danh sách nguyên liệu cần mua:** Tự động trích xuất nguyên liệu từ tất cả món ăn trong thực đơn, tự động cộng dồn các nguyên liệu trùng nhau, tính đơn giá và tổng chi phí đi chợ dự kiến.
-- **Lịch sử thực đơn:** Tự động lưu vết các thao tác (Tạo mới, Cập nhật, Đổi món) kèm ngày áp dụng và trạng thái.
+- **??ng k? / ??ng nh?p:** X?c th?c ng??i d?ng b?ng JWT (JSON Web Token), ??m b?o m?i phi?n l?m vi?c an to?n v? kh?ng hard-code userId.
+- **Th?ng tin c? nh?n:** C?p nh?t h? t?n, gi?i t?nh, ng?y sinh, chi?u cao, c?n n?ng. H? th?ng t? ??ng t?nh l?i **BMI** v? hi?n th? tr?ng th?i th? tr?ng (G?y / B?nh th??ng / Th?a c?n / B?o ph?).
+- **M?c ti?u dinh d??ng:** Thi?t l?p l??ng Calo, Protein, Carb, Fat m?c ti?u theo ng?y d?a tr?n m?c ??ch (T?ng c?n / Gi?m c?n / Gi? c?n).
+- **Thi?t l?p ng?n s?ch:** ??t ng?n s?ch ?n u?ng theo ng?y, tu?n, th?ng.
+- **?? xu?t th?c ??n:** Thu?t to?n t? ??ng g?i ? 3 ph??ng ?n th?c ??n (C?n ??i / Ti?t ki?m / Gi?u ??m) ph? h?p ??ng th?i v?i m?c ti?u dinh d??ng v? ng?n s?ch c?a ng??i d?ng.
+- **Xem chi ti?t th?c ??n:** Hi?n th? c?c m?n ?n theo t?ng b?a (S?ng / Tr?a / T?i / B?a ph?) c?ng th?ng s? dinh d??ng ??y ??.
+- **?i?u ch?nh th?c ??n (??i m?n):** Cho ph?p ??i m?n ?n trong t?ng b?a sang c?c m?n ?n thay th? ph? h?p, h? th?ng t? ??ng t?nh to?n l?i dinh d??ng v? chi ph?.
+- **T?ng quan chi ph?:** So s?nh chi ph? th?c ??n v?i ng?n s?ch ng?y, t?nh s? ti?n d?/v??t, chi ph? theo t?ng b?a ?n.
+- **Danh s?ch nguy?n li?u c?n mua:** T? ??ng tr?ch xu?t nguy?n li?u t? t?t c? m?n ?n trong th?c ??n, t? ??ng c?ng d?n c?c nguy?n li?u tr?ng nhau, t?nh ??n gi? v? t?ng chi ph? ?i ch? d? ki?n.
+- **L?ch s? th?c ??n:** T? ??ng l?u v?t c?c thao t?c (T?o m?i, C?p nh?t, ??i m?n) k?m ng?y ?p d?ng v? tr?ng th?i.
 
 ---
 
-## 2. Công Nghệ Sử Dụng
+## 2. C?ng Ngh? S? D?ng
 
 - **Frontend (Mobile App):**
-  - Nền tảng: Android (Native Java)
+  - N?n t?ng: Android (Native Java)
   - IDE: Android Studio
-  - Mạng & REST API Client: Retrofit 2, OkHttp 3, Gson
-  - Giao diện: XML Layouts, Material Design Components, Figma
+  - M?ng & REST API Client: Retrofit 2, OkHttp 3, Gson
+  - Giao di?n: XML Layouts, Material Design Components, Figma
 - **Backend (REST API Server):**
   - Framework: Spring Boot 3.x (Java 17)
-  - Bảo mật: Spring Security 6, JWT (io.jsonwebtoken)
+  - B?o m?t: Spring Security 6, JWT (io.jsonwebtoken)
   - ORM / Persistence: Spring Data JPA, Hibernate
   - Build tool: Apache Maven
-- **Cơ sở dữ liệu:**
-  - Hệ quản trị CSDL: MySQL 8.x / MariaDB (XAMPP)
-  - Tên CSDL: `nutribudget` (gồm 9 bảng liên kết quan hệ khóa ngoại)
-- **Thiết kế & Mô hình hóa:**
+- **C? s? d? li?u:**
+  - H? qu?n tr? CSDL: MySQL 8.x
+  - T?n CSDL: 
+utribudget (g?m 9 b?ng li?n k?t quan h? kh?a ngo?i)
+- **Thi?t k? & M? h?nh h?a:**
   - UI/UX: Figma
-  - Mô hình UML: StarUML
+  - M? h?nh UML: StarUML
 
 ---
 
-## 3. Cấu Trúc Thư Mục Dự Án
+## 3. C?u Tr?c Th? M?c D? ?n
 
-```text
+`	ext
 D:\Pham_Nguyen_Lan_Anh\
-├── app\                          # Mã nguồn ứng dụng Android Client (Java)
-│   ├── src\main\java\com\example\phamnguyenlananh\
-│   │   ├── data\                 # Repositories, API interfaces, Data models
-│   │   ├── ui\                   # Activities, Fragments, Adapters
-│   │   │   ├── auth\             # LoginActivity, RegisterActivity
-│   │   │   ├── main\             # MainActivity, Home, Meal, History, Profile
-│   │   │   ├── meal\             # MealDetail, AdjustMeal, CostOverview, GroceryList...
-│   │   │   └── profile\          # ProfileDetail, NutritionGoals, BudgetSettings...
-│   │   └── MainActivity.java
-│   └── src\main\res\             # XML layouts, drawables, values, navigation
-├── nutribudget-backend\          # Mã nguồn Spring Boot REST API
-│   ├── pom.xml                   # Cấu hình dependencies Maven
-│   └── src\main\
-│       ├── java\com\nutribudget\api\
-│       │   ├── controller\       # REST Controllers (Auth, User, Menu, Budget...)
-│       │   ├── dto\              # Request & Response Data Transfer Objects
-│       │   ├── entity\           # JPA Entities (9 bảng CSDL)
-│       │   ├── repository\       # Spring Data JPA Repositories
-│       │   ├── security\         # JWT Token Provider, Auth Filter, SecurityConfig
-│       │   └── service\          # Xử lý nghiệp vụ & thuật toán đề xuất
-│       └── resources\
-│           ├── application.properties # Cấu hình cổng, DB, JWT
-│           ├── schema.sql        # Script tạo 9 bảng CSDL
-│           └── data.sql          # Dữ liệu khởi tạo món ăn, nguyên liệu mẫu
-├── build.gradle                  # Root Gradle build script
-└── README.md
-```
+? app\                          # M? ngu?n ?ng d?ng Android Client (Java)
+?   ? src\main\java\com\example\phamnguyenlananh\
+?       ? data\                 # Repositories, API interfaces, Data models
+?       ? ui\                   # Activities, Fragments, Adapters
+?       ?   ? auth\             # LoginActivity, RegisterActivity
+?       ?   ? main\             # MainActivity, Home, Meal, History, Profile
+?       ?   ? meal\             # MealDetail, AdjustMeal, CostOverview, GroceryList
+?       ? MainActivity.java
+? nutribudget-backend\          # M? ngu?n Spring Boot REST API
+?   ? pom.xml                   # C?u h?nh dependencies Maven
+?   ? src\main\
+?       ? java\com\nutribudget\api\
+?       ?   ? controller\       # REST Controllers
+?       ?   ? dto\              # Request & Response DTOs
+?       ?   ? entity\           # JPA Entities (9 b?ng CSDL)
+?       ?   ? repository\       # Spring Data JPA Repositories
+?       ?   ? security\         # JWT Provider, Auth Filter, SecurityConfig
+?       ?   ? service\          # X? l? nghi?p v? & thu?t to?n ?? xu?t
+?       ? resources\
+?           ? application.properties
+?           ? schema.sql
+?           ? data.sql
+? fix_bua_an.sql                 # Script SQL s?a ph?n b? b?a ?n d? li?u c?
+? build.gradle
+? README.md
+`
 
 ---
 
-## 4. Hướng Dẫn Cài Đặt & Chạy Ứng Dụng
+## 4. H??ng D?n C?i ??t & Ch?y ?ng D?ng
 
-### Bước 1: Khởi động Cơ sở dữ liệu MySQL
-1. Mở **XAMPP Control Panel** và nhấn **Start** tại mục **MySQL** (hoặc khởi động dịch vụ MySQL Server trên máy tính).
-2. Kiểm tra cổng mặc định `3306`.
-3. Cơ sở dữ liệu tên: `nutribudget`.
-   - Nếu dùng XAMPP mặc định: Username là `root`, Password để **trống**.
-   - CSDL và các bảng được tự động khởi tạo và nạp dữ liệu mẫu khi Backend chạy.
+### B??c 1: Kh?i ??ng C? s? d? li?u MySQL
+1. M? **XAMPP Control Panel** v? nh?n **Start** t?i m?c **MySQL** (ho?c kh?i ??ng MySQL Server tr?c ti?p).
+2. Ki?m tra c?ng m?c ??nh 3306.
+3. C? s? d? li?u t?n: 
+utribudget.
+   - N?u d?ng XAMPP m?c ??nh: Username l? 
+oot, Password ?? **tr?ng**.
+   - CSDL v? c?c b?ng ???c t? ??ng kh?i t?o v? n?p d? li?u m?u khi Backend ch?y l?n ??u.
 
 ---
 
-### Bước 2: Chạy Backend Spring Boot
-Mở terminal/command prompt tại thư mục máy chủ và thực thi:
+### B??c 2: Ch?y Backend Spring Boot
+M? terminal/command prompt t?i th? m?c m?y ch? v? th?c thi:
 
-```bash
+`ash
 cd D:\Pham_Nguyen_Lan_Anh\nutribudget-backend
 mvn spring-boot:run
-```
+`
 
-*(Hoặc mở thư mục `nutribudget-backend` bằng IntelliJ IDEA / Eclipse và nhấn Run class `NutriBudgetApplication.java`)*
+*(Ho?c m? th? m?c 
+utribudget-backend b?ng IntelliJ IDEA / Eclipse v? nh?n Run class NutriBudgetApplication.java)*
 
-- Khi khởi động thành công, server sẽ lắng nghe tại: `http://localhost:8080`.
-- Kiểm tra trạng thái API nhanh qua trình duyệt: `http://localhost:8080/api/dishes`.
+- Khi kh?i ??ng th?nh c?ng, server s? l?ng nghe t?i: http://localhost:8080
+- Ki?m tra nhanh: http://localhost:8080/api/dishes
 
 ---
 
-### Bước 3: Cấu hình địa chỉ IP trong Android App
-Địa chỉ API được định cấu hình tại file:
-`app/src/main/java/com/example/phamnguyenlananh/data/api/ApiConfig.java`
+### B??c 3: C?u h?nh ??a ch? IP trong Android App
+??a ch? API ???c ??nh c?u h?nh t?i file:
+pp/src/main/java/com/example/phamnguyenlananh/data/api/ApiConfig.java
 
-- **Nếu chạy trên Android Emulator (Máy ảo Android Studio):**
-  Giữ nguyên mặc định:
-  ```java
+- **N?u ch?y tr?n Android Emulator (M?y ?o Android Studio):**
+  `java
   public static final String BASE_URL = "http://10.0.2.2:8080/";
-  ```
-  *(10.0.2.2 là địa chỉ loopback đặc biệt giúp máy ảo Android kết nối tới localhost của máy tính host).*
+  `
+  *(10.0.2.2 l? ??a ch? loopback ??c bi?t gi?p m?y ?o k?t n?i t?i localhost c?a m?y t?nh host)*
 
-- **Nếu chạy trên Thiết bị thật (Điện thoại cắm cáp / qua Wi-Fi):**
-  1. Đảm bảo điện thoại và máy tính kết nối **chung một mạng Wi-Fi**.
-  2. Mở Command Prompt trên máy tính, gõ `ipconfig` để lấy địa chỉ IPv4 (Ví dụ: `192.168.1.15`).
-  3. Cập nhật `ApiConfig.java`:
-     ```java
+- **N?u ch?y tr?n Thi?t b? th?t (?i?n tho?i c?m c?p / qua Wi-Fi):**
+  1. ??m b?o ?i?n tho?i v? m?y t?nh k?t n?i **chung m?t m?ng Wi-Fi**.
+  2. M? Command Prompt, g? ipconfig ?? l?y ??a ch? IPv4 (V? d?: 192.168.1.15).
+  3. C?p nh?t ApiConfig.java:
+     `java
      public static final String BASE_URL = "http://192.168.1.15:8080/";
-     ```
+     `
 
 ---
 
-### Bước 4: Khởi chạy Ứng dụng Android
+### B??c 4: Kh?i ch?y ?ng d?ng Android
 
-#### Cách 1: Sử dụng Android Studio (Khuyến nghị)
-1. Mở **Android Studio**.
-2. Chọn **Open** và dẫn tới thư mục gốc của dự án: `D:\Pham_Nguyen_Lan_Anh`.
-3. Chờ Android Studio đồng bộ xong Gradle (Sync Project with Gradle Files).
-4. Chọn thiết bị chạy (Android Virtual Device - AVD hoặc Điện thoại cắm cáp đã bật USB Debugging).
-5. Nhấn nút **Run** (biểu tượng tam giác xanh ▶ hoặc phím tắt `Shift + F10`).
+#### C?ch 1: S? d?ng Android Studio (Khuy?n ngh?)
+1. M? **Android Studio**.
+2. Ch?n **Open** v? d?n t?i th? m?c g?c c?a d? ?n: D:\Pham_Nguyen_Lan_Anh.
+3. Ch? Android Studio ??ng b? xong Gradle (Sync Project with Gradle Files).
+4. Ch?n thi?t b? ch?y (AVD ho?c ?i?n tho?i c?m c?p ?? b?t USB Debugging).
+5. Nh?n n?t **Run** (? ho?c ph?m t?t Shift + F10).
 
-#### Cách 2: Sử dụng dòng lệnh (Terminal / PowerShell)
-Tại thư mục gốc `D:\Pham_Nguyen_Lan_Anh`, chạy:
-```bash
+#### C?ch 2: S? d?ng d?ng l?nh (Terminal / PowerShell)
+T?i th? m?c g?c D:\Pham_Nguyen_Lan_Anh, ch?y:
+`ash
 # Build file APK Debug
 .\gradlew.bat assembleDebug
 
-# Cài đặt trực tiếp lên thiết bị đang kết nối
+# C?i ??t tr?c ti?p l?n thi?t b? ?ang k?t n?i
 .\gradlew.bat installDebug
-```
+`
 
 ---
 
-## 5. Tài Khoản Thử Nghiệm (Demo Accounts)
+### B??c 5 (Tu? ch?n): S?a d? li?u c? b? l?i ph?n b? b?a ?n
+N?u c?c th?c ??n ?? l?u tr??c ??y hi?n th? sai chi ph? theo b?a (t?t c? d?n v?o B?a tr?a),
+h?y ch?y script SQL ??nh k?m:
 
-Hệ thống đã có sẵn các tài khoản mẫu trong cơ sở dữ liệu để đăng nhập và trải nghiệm ngay:
+`ash
+"C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" -u root --database=nutribudget < fix_bua_an.sql
+`
 
-| Email | Mật khẩu | Ghi chú |
+Script n?y **ch? s?a c?c th?c ??n b? l?i** (c? t?t c? m?n c?ng b?a = TRUA), kh?ng ?nh h??ng d? li?u ??ng.
+
+---
+
+## 5. T?i Kho?n Th? Nghi?m (Demo Accounts)
+
+H? th?ng ?? c? s?n c?c t?i kho?n m?u trong c? s? d? li?u:
+
+| Email | M?t kh?u | Ghi ch? |
 | :--- | :--- | :--- |
-| `lananh@nutribudget.com` | `123456` | Tài khoản chính có đầy đủ mục tiêu, ngân sách và lịch sử thực đơn |
-| `nguyenvana@gmail.com` | `123456` | Tài khoản mẫu 2 |
+| lananh@nutribudget.com | 123456 | T?i kho?n ch?nh ? c? ??y ?? m?c ti?u, ng?n s?ch v? l?ch s? th?c ??n |
+| 
+guyenvana@gmail.com | 123456 | T?i kho?n m?u 2 |
 
-*Người dùng cũng có thể nhấn **"Đăng ký ngay"** trên màn hình để tạo một tài khoản hoàn toàn mới.*
+*Ng??i d?ng c?ng c? th? nh?n **"??ng k? ngay"** tr?n m?n h?nh ?? t?o t?i kho?n ho?n to?n m?i.*
 
 ---
 
-## 6. Kịch Bản Chạy Demo Toàn Bộ Chức Năng (Walkthrough)
+## 6. K?ch B?n Ch?y Demo To?n B? Ch?c N?ng (Walkthrough)
 
-1. **Đăng nhập / Đăng ký:** Mở ứng dụng, nhập email và mật khẩu hoặc đăng ký tài khoản mới.
-2. **Cập nhật thể trạng & BMI:** Vào tab **Cá nhân** $\rightarrow$ **Thông tin cá nhân** $\rightarrow$ Cập nhật Chiều cao, Cân nặng $\rightarrow$ Ứng dụng tự động tính lại BMI và hiển thị trạng thái thể trạng.
-3. **Thiết lập mục tiêu dinh dưỡng:** Tab **Cá nhân** $\rightarrow$ **Mục tiêu dinh dưỡng** $\rightarrow$ Chọn mục tiêu (Tăng cân / Giảm cân / Giữ cân), điều chỉnh Calo và tỷ lệ Macronutrients $\rightarrow$ Nhấn **Lưu mục tiêu**.
-4. **Thiết lập ngân sách:** Tab **Cá nhân** $\rightarrow$ **Thiết lập ngân sách** $\rightarrow$ Đặt ngân sách ngày, tuần, tháng $\rightarrow$ Nhấn **Lưu ngân sách**.
-5. **Nhận đề xuất thực đơn:** Chuyển sang tab **Thực đơn** $\rightarrow$ Hệ thống tự động gọi API lấy 3 phương án gợi ý theo đúng thể trạng và ngân sách vừa cài đặt.
-6. **Xem chi tiết & Điều chỉnh thực đơn:** Bấm chọn một phương án $\rightarrow$ Màn hình **Chi tiết thực đơn** hiển thị các món ăn theo bữa $\rightarrow$ Nhấn **"Điều chỉnh thực đơn"** $\rightarrow$ Chọn một món để thay thế bằng món khác trong danh sách $\rightarrow$ Xem calo và giá tiền tự động tính lại.
-7. **Xem tổng quan chi phí & Nguyên liệu cần mua:**
-   - Nhấn **"Xem tổng chi phí"**: Phân tích chi tiết tiền theo từng bữa, số tiền còn dư hoặc vượt ngân sách.
-   - Nhấn **"Nguyên liệu cần mua"**: Xem danh sách các nguyên liệu đi chợ đã được tự động cộng dồn số lượng và tính tổng số tiền.
-8. **Lưu thực đơn & Xem lịch sử:** Nhấn **"Lưu thực đơn"** $\rightarrow$ Chuyển sang tab **Lịch sử** để xem danh sách các thực đơn đã áp dụng và nhật ký các thao tác (`TAO_MOI`, `DOI_MON`).
+1. **??ng nh?p / ??ng k?:** M? ?ng d?ng, nh?p email v? m?t kh?u ho?c ??ng k? t?i kho?n m?i.
+2. **C?p nh?t th? tr?ng & BMI:** V?o tab **C? nh?n** ? **Th?ng tin c? nh?n** ? C?p nh?t Chi?u cao, C?n n?ng ? ?ng d?ng t? ??ng t?nh l?i BMI v? hi?n th? tr?ng th?i th? tr?ng.
+3. **Thi?t l?p m?c ti?u dinh d??ng:** Tab **C? nh?n** ? **M?c ti?u dinh d??ng** ? Ch?n m?c ti?u (T?ng c?n / Gi?m c?n / Gi? c?n), ?i?u ch?nh Calo v? t? l? Macronutrients ? Nh?n **L?u m?c ti?u**.
+4. **Thi?t l?p ng?n s?ch:** Tab **C? nh?n** ? **Thi?t l?p ng?n s?ch** ? ??t ng?n s?ch ng?y, tu?n, th?ng ? Nh?n **L?u ng?n s?ch**.
+5. **Nh?n ?? xu?t th?c ??n:** Chuy?n sang tab **Th?c ??n** ? H? th?ng t? ??ng g?i ? 3 ph??ng ?n ph? h?p v?i th? tr?ng v? ng?n s?ch.
+6. **Xem chi ti?t & ?i?u ch?nh th?c ??n:** B?m ch?n m?t ph??ng ?n ? M?n h?nh **Chi ti?t th?c ??n** hi?n th? c?c m?n ?n theo b?a ? Nh?n **"?i?u ch?nh th?c ??n"** ? Ch?n m?t m?n ?? thay th? ? Xem calo v? gi? ti?n t? ??ng t?nh l?i.
+7. **Xem t?ng quan chi ph? & Nguy?n li?u c?n mua:**
+   - Nh?n **"Xem t?ng chi ph?"**: Ph?n t?ch chi ti?t ti?n theo t?ng b?a, s? ti?n c?n d? ho?c v??t ng?n s?ch.
+   - Nh?n **"Nguy?n li?u c?n mua"**: Xem danh s?ch c?c nguy?n li?u ?i ch? ?? ???c t? ??ng c?ng d?n s? l??ng v? t?nh t?ng s? ti?n.
+8. **L?u th?c ??n & Xem l?ch s?:** Nh?n **"L?u th?c ??n"** ? Chuy?n sang tab **L?ch s?** ?? xem danh s?ch c?c th?c ??n ?? ?p d?ng v? nh?t k? c?c thao t?c (TAO_MOI, DOI_MON).
+
+---
+
+## 7. C?c V?n ?? ?? Bi?t & C?ch Kh?c Ph?c
+
+| V?n ?? | Nguy?n nh?n | C?ch kh?c ph?c |
+| :--- | :--- | :--- |
+| Chi ph? theo b?a hi?n th? 0? ? B?a s?ng/B?a t?i | L?i encoding ti?ng Vi?t khi l?u th?c ??n c?, t?t c? b?a b? g?n l? TRUA | Ch?y ix_bua_an.sql (xem B??c 5) |
+| Kh?ng k?t n?i ???c API t? ?i?n tho?i th?t | Sai ??a ch? IP trong ApiConfig.java | C?p nh?t IP Wi-Fi m?y t?nh v?o BASE_URL |
+| Backend kh?ng kh?i ??ng | Ch?a b?t MySQL ho?c sai c?ng | Ki?m tra MySQL ?ang ch?y tr?n c?ng 3306 |
+
+---
+
+## 8. Lu?ng D? Li?u To?n B? H? Th?ng
+
+`
+Android App
+    ? (JWT Bearer Token)
+    ?
+Spring Boot REST API (localhost:8080)
+    ? (Spring Data JPA / Hibernate)
+    ?
+MySQL Database (nutribudget)
+    ??? nguoi_dung
+    ??? muc_tieu_dinh_duong
+    ??? ngan_sach
+    ??? mon_an
+    ??? nguyen_lieu
+    ??? nguyen_lieu_mon_an
+    ??? thuc_don
+    ??? chi_tiet_thuc_don  ? buaAn: SANG / TRUA / TOI / PHU
+    ??? lich_su_thuc_don
+`
